@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+	Login
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+  <div class="row">
+    <div class="large-12 columns">
+      <h1><a href="/">MiReads</a></h1>
+    </div>
+  </div>
+
+	<form method="post">
+		<div class="row">
+			<div class="large-4 columns">
+				<fieldset>
+					<legend>Login</legend>
+
+					<label>Username
+						<input type="text" name="username" value="{{username}}">
+					</label>
+
+					<label>Password
+						<input type="password" name="password" value="">
+					</label>
+
+					{% if error %}<small class="error">{{ error }}</small>{% endif %}
+
+					<input class="button tiny radius" type="Submit">
+				</fieldset>
+			</div>
+		</div>
+
+	</form>
+{% endblock %}

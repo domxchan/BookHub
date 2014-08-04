@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}
+	Signup
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+  <div class="row">
+    <div class="large-12 columns">
+      <h1><a href="/">MiReads</a></h1>
+    </div>
+  </div>
+
+	<form method="post">
+		<div class="row">
+			<div class="large-6 columns">
+				<fieldset>
+					<legend>Signup</legend>
+
+					{% if error_username %}
+						<label>Username
+							<input class="error" type="text" name="username" value="{{username}}">
+						</label>
+						<small class="error">{{ error_username }}</small>
+					{% else %}
+						<label>Username
+							<input class="" type="text" name="username" value="{{username}}">
+						</label>
+					{% endif %}
+
+					{% if error_password %}
+						<label>Password
+							<input class="error" type="password" name="password" value="">
+						</label>
+						<small class="error">{{ error_password }}</small>
+					{% else %}
+						<label>Password
+							<input class="" type="password" name="password" value="">
+						</label>
+					{% endif %}
+
+					{% if error_verify %}
+						<label>Verify Password
+							<input class="error" type="password" name="verify" value="">
+						</label>
+						<small class="error">{{ error_verify }}</small>
+					{% else %}
+						<label>Verify Password
+							<input class="" type="password" name="verify" value="">
+						</label>
+					{% endif %}
+
+					{% if error_email %}
+						<label>Email (Optional)
+							<input class="error" type="text" name="email" value="{{ email }}">
+						</label>
+						<small class="error">{{ error_email }}</small>
+					{% else %}
+						<label>Email (Optional)
+							<input class="" type="text" name="email" value="{{ email }}">
+						</label>
+					{% endif %}
+
+<!-- 					<label class="large-4 columns">Password
+						<input type="password" name="password" value="">
+					</label>
+					<div class="large-2 columns">{{ error_password }}</div>
+
+					<label class="large-4 columns">Verify Password
+						<input type="password" name="verify" value="">
+					</label>
+					<div class="large-2 columns">{{ error_verify }}</div>
+				
+					<label class="large-4 columns">Email (optional)
+						<input type="text" name="email" value="{{ email }}">
+					</label>
+					<div class="large-2 columns">{{ error_email }}</div> -->
+
+<!-- 					{% if error %}<small class="error">{{ error }}</small>{% endif %}
+ -->
+					<input class="button tiny radius" type="submit" value="Sign Me Up">
+				</fieldset>
+			</div>
+		</div>
+
+	</form>
+
+<!-- 	<table>
+		<tr>
+			<td class="label">
+				Username
+			</td>
+			<td>
+				<input type="text" name="username" value="{{username}}">
+			</td>
+			<td class="error">
+				{{error_username}}
+			</td>
+		</tr>
+
+		<tr>
+			<td class="label">
+				Password
+			</td>
+			<td>
+				<input type="password" name="password" value="">
+			</td>
+			<td class="error">
+				{{error_password}}
+			</td>
+		</tr>
+
+		<tr>
+			<td class="label">
+				Verify Password
+			</td>
+			<td>
+				<input type="password" name="verify" value="">
+			</td>
+			<td class="error">
+				{{error_verify}}
+			</td>
+		</tr>
+
+		<tr>
+			<td class="label">
+				Email (optional)
+			</td>
+			<td>
+				<input type="text" name="email" value="{{email}}">
+			</td>
+			<td class="error">
+				{{error_email}}
+			</td>
+		</tr>
+	</table>
+
+	<input type="submit" value="Sign Me Up!">-->
+</form>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}
+Show Book
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="css/foundation-icons.css" />
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="large-12 columns">
+		<h1><a href="/">MiReads</a></h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="large-12 columns">
+		<ul class="breadcrumbs">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="mylibrary.html">My Library</a></li>
+			<li class="current"><a href="#">{{ head_title }}</a></li>
+		</ul>
+	</div>
+</div>
+
+{% for book in books %}
+<hr />
+<div id="reviewSection{{ loop.index0 }}">
+	<div class="row">
+		<div class="large-3 columns">
+			<img src="/_getimage?key={{ book.isbn }}&idx=0" />
+		</div>
+		<div class="large-9 columns">
+			<h3>{{book.name}}</h3>
+			<div class="large-6 columns">
+				<ul class="no-bullet">
+					<li><b>Author:</b>
+						{{ book.author|join(", ") }}
+					</li>
+					<li><b>Illustrator: </b>
+						{{ book.illustrator }}
+					</li>
+					<li><b>Publisher: </b>
+						{{ book.publisher }}
+					</li>
+					<li><b>Extent (pages): </b>
+						{{ book.extent }}
+					</li>
+					<li><b>ISBN: </b>
+						{{ book.isbn }}
+					</li>
+					<li><b>Dimensions (cm): </b>
+						{{ book.dimensions}}
+					</li>
+				</ul>
+			</div>
+			<div class="large-6 columns">
+				<b>Your rating</b> <br /> <br />
+				{% for label, display in [('linguistic', 'Linguistic'), ('logical', 'Logical'), ('interpersonal', 'Interpersonal'), ('intrapersonal', 'Intrapersonal'), ('naturalistic', 'Naturalistic'), ('right_minded', 'Right Minded')] %}
+				{% if book.rating is defined %}{% set rated = book.rating|attr(label) %}{% else %}{% set rated = 0 %}{% endif %}
+				<div class="large-5 columns">
+					{{ display }}
+				</div>
+				<div class="large-7 columns">
+					<div id="reviewCat_{{ label }}&isbn_{{ book.isbn }}" class="rated {{ rated or ''}}">
+						<i class="fi-star star_style rating_1 review_cat_{{ label }}{% if rated >= 1.0 %} highlight_star{% endif %}{% if rated %} fixedStar{% endif %}"></i>
+						<i class="fi-star star_style rating_2 review_cat_{{ label }}{% if rated >= 2.0 %} highlight_star{% endif %}{% if rated %} fixedStar{% endif %}"></i>
+						<i class="fi-star star_style rating_3 review_cat_{{ label }}{% if rated >= 3.0 %} highlight_star{% endif %}{% if rated %} fixedStar{% endif %}"></i>
+						<i class="fi-star star_style rating_4 review_cat_{{ label }}{% if rated >= 4.0 %} highlight_star{% endif %}{% if rated %} fixedStar{% endif %}"></i>
+						<i class="fi-star star_style rating_5 review_cat_{{ label }}{% if rated >= 5.0 %} highlight_star{% endif %}{% if rated %} fixedStar{% endif %}"></i>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="large-12 columns">
+			<ul class="no-bullet">
+				<li><b>Description: </b></li>
+				<li>
+					{{ book.desc }}
+				</li>
+			</ul>
+			</div>
+		</div>
+<!-- 			<div class="large-12 columns">
+				<dl>
+					<dt>Description: </dt>
+					<dd>{{ book.desc }}</dd>
+				</dl>
+			</div> -->
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

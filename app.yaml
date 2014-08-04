@@ -1,0 +1,40 @@
+application: s~add-oil-cloud
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /js
+  static_dir: templates/js
+
+- url: /css
+  static_dir: templates/css
+
+- url: /img
+  static_dir: templates/img
+
+- url: /bower_components
+  static_dir: templates/bower_components
+
+- url: /.*
+  script: main.application
+
+libraries:
+- name: jinja2
+  version: latest
+
+- name: markupsafe
+  version: latest
+
+- name: lxml
+  version: latest
+
+- name: PIL
+  version: latest
+
+builtins:
+- remote_api: on
