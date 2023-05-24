@@ -1,4 +1,4 @@
-application: s~add-oil-cloud
+application: s~bookdom
 version: 1
 runtime: python27
 api_version: 1
